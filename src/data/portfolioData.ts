@@ -443,6 +443,75 @@ def calculate_indicators(df, short_window=12, long_window=26, signal_window=9):
     return df`
         }
       }
+    },
+    {
+      id: "weather-hub",
+      title: "HiNacho Weather Hub",
+      category: "Data Analytics",
+      tags: ["Data Analytics", "ETL Pipelines", "Dashboards"],
+      summary: "Automated end-to-end weather ETL pipeline and interactive dashboard for real-time geographical mapping and in-browser SQL querying.",
+      image: "/img/weather_hub.jpg",
+      tech: ["Python", "Pandas", "SQLite", "Leaflet.js", "JavaScript"],
+      links: {
+        github: "https://github.com/HiNacho/HiNacho_weather_hub",
+        demo: "https://hinacho.github.io/HiNacho_weather_hub/",
+        caseStudy: "/projects/weather-hub"
+      },
+      details: {
+        overview: "HiNacho Weather Hub is an automated end-to-end weather data processing system. It runs local ETL pipelines fetching data from weather APIs, structures it into SQLite database formats, and serves an interactive mapping dashboard featuring in-browser SQL querying capability for immediate data previews.",
+        problem: "Weather API data ingestion is historically unstructured, prone to credential leaks, and easily disrupted by network limits or key activation delays. This project establishes a resilient local ETL pipeline with an offline mock-fallback sandbox and pairs it with a secure dashboard allowing analysts to preview transformations, manage active cities, and execute database queries directly in the browser using standard SQL.",
+        dataset: "Real-time global weather observations ingested from OpenWeatherMap API and localized meteorological databases, aggregated on a city-by-city basis.",
+        methodology: "Implemented an automated Python data ingestion pipeline utilizing Pandas for data cleaning, type conversion, and structuring. Built a custom SQLite wrapper to handle transactional inserts and updates, coupled with a robust API handler providing offline mock fallbacks in case of network outages or API limits.",
+        architecture: "Consists of a Python ETL engine running on scheduler, storing records in local SQLite databases. The presentation layer uses HTML/CSS and vanilla JavaScript, embedding Leaflet.js for interactive mapping, and incorporating SQL.js to compile and execute SQL queries directly in the browser.",
+        results: [
+          "Established a resilient local ETL system with zero API credential leak risk via environment isolation.",
+          "Designed a full mock-fallback pipeline allowing offline testing and immediate simulation of extreme weather conditions.",
+          "Enabled analysts to execute ad-hoc SQL select/filter queries on weather records directly within the browser."
+        ],
+        impact: "Empowers data analysts to experiment with live meteorological transformations and spatial trends without requiring database administration knowledge or server-side execution privileges.",
+        codeSnippet: {
+          language: "python",
+          code: `# Weather ETL Pipeline extraction & transform pipeline
+import pandas as pd
+import requests
+
+def run_weather_etl(city_list, api_key=None):
+    raw_data = []
+    
+    # Ingestion layer with API fallback
+    for city in city_list:
+        if api_key:
+            url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+            res = requests.get(url)
+            if res.status_code == 200:
+                raw_data.append(res.json())
+        else:
+            # Fallback mock sandbox data
+            raw_data.append({
+                "name": city,
+                "main": {"temp": 22.5, "humidity": 65, "pressure": 1013},
+                "wind": {"speed": 4.5},
+                "weather": [{"main": "Clouds", "description": "scattered clouds"}]
+            })
+            
+    # Transformation layer using Pandas
+    records = []
+    for item in raw_data:
+        records.append({
+            "city": item.get("name"),
+            "temp_c": item.get("main", {}).get("temp"),
+            "humidity": item.get("main", {}).get("humidity"),
+            "pressure": item.get("main", {}).get("pressure"),
+            "wind_speed": item.get("wind", {}).get("speed"),
+            "condition": item.get("weather", [{}])[0].get("main")
+        })
+        
+    df = pd.DataFrame(records)
+    # Convert temperatures to Kelvin as custom transformation example
+    df['temp_k'] = df['temp_c'] + 273.15
+    return df`
+        }
+      }
     }
   ],
 
