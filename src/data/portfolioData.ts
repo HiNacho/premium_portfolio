@@ -454,7 +454,7 @@ def calculate_indicators(df, short_window=12, long_window=26, signal_window=9):
       tech: ["Python", "Pandas", "SQLite", "Leaflet.js", "JavaScript"],
       links: {
         github: "https://github.com/HiNacho/HiNacho_weather_hub",
-        demo: "https://hinacho.github.io/HiNacho_weather_hub/",
+        demo: "https://nachowatch.netlify.app/",
         caseStudy: "/projects/weather-hub"
       },
       details: {
