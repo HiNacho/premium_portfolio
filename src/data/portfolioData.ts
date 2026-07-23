@@ -687,8 +687,7 @@ Read the full story on Medium: [The Day the Links Died: Surviving the AI Search 
   techStack: {
     programming: [
       { name: "Python", logo: "Py" },
-      { name: "SQL", logo: "SQL" },
-      { name: "JavaScript", logo: "JS" }
+      { name: "SQL", logo: "SQL" }
     ],
     frameworks: [
       { name: "LangChain", logo: "LC" }
@@ -709,8 +708,7 @@ Read the full story on Medium: [The Day the Links Died: Surviving the AI Search 
     ],
     visualization: [
       { name: "Excel", logo: "Xl" },
-      { name: "Tableau", logo: "Tab" },
-      { name: "Plotly", logo: "Pl" }
+      { name: "Tableau", logo: "Tab" }
     ]
   }
 };
