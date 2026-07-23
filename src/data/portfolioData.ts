@@ -87,7 +87,6 @@ export const portfolioData = {
     socials: {
       linkedin: "https://linkedin.com",
       github: "https://github.com/HiNacho",
-      twitter: "https://x.com",
       email: "mailto:hellotonachoai@gmail.com",
       kaggle: "https://www.kaggle.com/hinacho"
     }
