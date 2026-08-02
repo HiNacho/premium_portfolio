@@ -275,7 +275,7 @@ def analyze_conversion(df):
       tech: ["Python", "PyTorch", "FastAPI", "ONNX"],
       links: {
         github: "https://github.com/HiNacho/AgriVision",
-        demo: "https://youtu.be/UHBJ25DsnYU",
+        demo: "https://agri-vision-orpin.vercel.app/",
         caseStudy: "/projects/agrivision30"
       },
       details: {
