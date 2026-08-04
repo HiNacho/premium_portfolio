@@ -78,7 +78,7 @@ export const portfolioData = {
     name: "Victor Iheanacho",
     title: "Data Analyst & AI Engineer",
     brandName: "Nacho.AI",
-    email: "hellotonachoai@gmail.com",
+    email: "hellotovictor@gmail.com",
     location: "Lagos, Nigeria",
     experienceYears: "2+",
     availability: "Open to opportunities",
@@ -87,7 +87,7 @@ export const portfolioData = {
     socials: {
       linkedin: "https://linkedin.com",
       github: "https://github.com/HiNacho",
-      email: "mailto:hellotonachoai@gmail.com",
+      email: "mailto:hellotovictor@gmail.com",
       kaggle: "https://www.kaggle.com/hinacho"
     }
   },
