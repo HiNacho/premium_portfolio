@@ -151,7 +151,6 @@ export const Contact: React.FC = () => {
                 onSubmit={handleSubmit} 
                 className="space-y-5"
                 name="contact"
-                data-netlify="true"
               >
                 {/* Hidden field required for Next.js Netlify Forms detection */}
                 <input type="hidden" name="form-name" value="contact" />
