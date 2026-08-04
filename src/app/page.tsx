@@ -13,12 +13,16 @@ import { Experience } from '@/components/sections/Experience';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Contact } from '@/components/sections/Contact';
 import { Footer } from '@/components/layout/Footer';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 
 export default function Home() {
   return (
     <>
       {/* Floating navigation header */}
       <Navbar />
+      
+      {/* Floating WhatsApp chat button */}
+      <WhatsAppButton />
       
       {/* Core single-page flow */}
       <main className="flex-grow">
