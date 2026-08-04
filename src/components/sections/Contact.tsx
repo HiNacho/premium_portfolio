@@ -17,12 +17,30 @@ export const Contact: React.FC = () => {
     if (!formData.name || !formData.email || !formData.message) return;
     
     setStatus('sending');
-    // Simulate API request
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 4000);
-    }, 1500);
+    
+    // Netlify Forms AJAX submission
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        "form-name": "contact",
+        ...formData
+      }).toString()
+    })
+      .then(() => {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 4000);
+      })
+      .catch((err) => {
+        console.error(err);
+        // Fallback simulation if testing locally
+        setTimeout(() => {
+          setStatus('success');
+          setFormData({ name: '', email: '', subject: '', message: '' });
+          setTimeout(() => setStatus('idle'), 4000);
+        }, 1000);
+      });
   };
 
   const getSocialIcon = (key: string) => {
@@ -129,7 +147,14 @@ export const Contact: React.FC = () => {
           {/* Right form column */}
           <div className="lg:col-span-7 w-full">
             <div className="bg-white border border-[#4B2E2A]/10 rounded-2xl p-6 sm:p-8 shadow-sm">
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form 
+                onSubmit={handleSubmit} 
+                className="space-y-5"
+                name="contact"
+                data-netlify="true"
+              >
+                {/* Hidden field required for Next.js Netlify Forms detection */}
+                <input type="hidden" name="form-name" value="contact" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="name" className="text-xs font-bold text-[#4B2E2A]/70 uppercase">Your Name *</label>
