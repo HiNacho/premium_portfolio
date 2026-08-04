@@ -19,7 +19,7 @@ export const Contact: React.FC = () => {
     setStatus('sending');
     
     // Netlify Forms AJAX submission
-    fetch("/", {
+    fetch("/__forms.html", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({
