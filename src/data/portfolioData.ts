@@ -85,7 +85,7 @@ export const portfolioData = {
     resumeUrl: "/resume.pdf",
     calendlyUrl: "https://calendly.com",
     socials: {
-      linkedin: "https://linkedin.com",
+      linkedin: "https://www.linkedin.com/in/hinacho/",
       github: "https://github.com/HiNacho",
       email: "mailto:hellotovictor@gmail.com",
       kaggle: "https://www.kaggle.com/hinacho"
