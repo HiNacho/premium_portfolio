@@ -695,13 +695,13 @@ Read the full story on Medium: [The Day the Links Died: Surviving the AI Search 
     {
       id: "exp-5",
       category: "Internships",
-      role: "Data Analyst Intern",
-      organization: "AnalystLab",
-      period: "2025",
+      role: "Data Analytics Intern",
+      organization: "AnalystLab Africa",
+      period: "Jun. 2026 – Aug. 2026",
       bullets: [
-        "Designed and built clean automation pipelines and ETL scripts that save hours of operational work.",
-        "Optimized slow client database queries and built indexes, reducing report generation runtimes.",
-        "Built interactive dashboards and reports tracking key business metrics and KPIs."
+        "Worked on multiple real-world analytics projects spanning financial markets, direct marketing, e-commerce, and streaming platform datasets.",
+        "Performed data cleaning, validation, exploratory data analysis, visualization, feature engineering, and statistical analysis using Python and its data science ecosystem.",
+        "Translated analytical findings into actionable business recommendations through technical reports, dashboards, and data storytelling."
       ]
     },
     {
@@ -720,12 +720,12 @@ Read the full story on Medium: [The Day the Links Died: Surviving the AI Search 
       id: "exp-2",
       category: "Research",
       role: "Machine Learning Researcher",
-      organization: "SPaRK Academy",
-      period: "2025",
+      organization: "Spark Academy",
+      period: "Mar. 2025 – Dec. 2025",
       bullets: [
-        "Fine-tuned MedSAM (Segment Anything Model for Medicine) for glioblastoma brain tumor image segmentation.",
-        "Preprocessed and curated neuroimaging datasets, implementing normalization, resizing, and data augmentation pipelines.",
-        "Evaluated segmentation accuracy using domain-relevant metrics including Dice Coefficient, IoU, Precision, and Recall."
+        "Preprocessed and curated medical image datasets, including normalization, resizing, augmentation, and labeling to improve model performance.",
+        "Designed, trained, and fine-tuned convolutional neural networks for tasks such as disease detection (glioblastoma), classification, and image segmentation.",
+        "Evaluated model performance using medical-relevant metrics such as accuracy, precision, recall, and dice score."
       ]
     },
 
