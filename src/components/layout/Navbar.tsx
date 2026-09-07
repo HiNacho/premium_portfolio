@@ -47,12 +47,13 @@ export const Navbar: React.FC = () => {
           : 'bg-transparent py-6'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
         <a 
           href="#home" 
           onClick={(e) => handleScrollTo(e, '#home')}
-          className="hover:opacity-90 transition-opacity"
+          className="hover:opacity-90 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F47C20] rounded-lg"
+          aria-label="HiNacho Home"
         >
           <Logo size="sm" />
         </a>
@@ -78,16 +79,17 @@ export const Navbar: React.FC = () => {
             onClick={(e) => handleScrollTo(e, '#contact')}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F47C20] text-white text-sm font-semibold hover:bg-[#F47C20]/90 transition-colors shadow-md shadow-[#F47C20]/15 group"
           >
-            Let's Connect
+            Let&apos;s Connect
             <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button - Optimized 44px touch target */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden p-2 text-[#4B2E2A] focus:outline-none"
-          aria-label="Toggle menu"
+          className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-[#4B2E2A] hover:bg-[#4B2E2A]/5 active:bg-[#4B2E2A]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F47C20]"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -115,7 +117,7 @@ export const Navbar: React.FC = () => {
             onClick={(e) => handleScrollTo(e, '#contact')}
             className="inline-flex items-center justify-center gap-2 mt-4 px-6 py-3 rounded-xl bg-[#F47C20] text-white font-semibold text-center hover:bg-[#F47C20]/90 transition-colors"
           >
-            Let's Connect
+            Let&apos;s Connect
             <ArrowRight size={18} />
           </a>
         </nav>
