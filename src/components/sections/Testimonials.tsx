@@ -3,25 +3,28 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioData } from '../../data/portfolioData';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, Sparkles, Award } from 'lucide-react';
 
 export const Testimonials: React.FC = () => {
   const { testimonials } = portfolioData;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+  const [direction, setDirection] = useState(0);
 
   const slideVariants = {
     enter: (dir: number) => ({
-      x: dir > 0 ? 100 : -100,
-      opacity: 0
+      x: dir > 0 ? 60 : -60,
+      opacity: 0,
+      scale: 0.98
     }),
     center: {
       x: 0,
-      opacity: 1
+      opacity: 1,
+      scale: 1
     },
     exit: (dir: number) => ({
-      x: dir < 0 ? 100 : -100,
-      opacity: 0
+      x: dir < 0 ? 60 : -60,
+      opacity: 0,
+      scale: 0.98
     })
   };
 
@@ -38,23 +41,39 @@ export const Testimonials: React.FC = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section id="testimonials" className="relative py-20 md:py-28 bg-grain bg-warm-white z-20 border-t border-[#4B2E2A]/5 overflow-hidden">
-      {/* Decorative gradient radial highlights */}
-      <div className="absolute left-[-100px] bottom-[-100px] w-[300px] h-[300px] bg-glow-orange opacity-40 pointer-events-none" />
+    <section id="testimonials" className="relative py-14 sm:py-20 md:py-28 bg-grain bg-warm-white z-20 border-t border-[#4B2E2A]/5 overflow-hidden">
+      {/* Decorative ambient glow */}
+      <div className="absolute left-[-80px] bottom-[-80px] w-[260px] sm:w-[320px] h-[260px] sm:h-[320px] bg-glow-orange opacity-40 pointer-events-none" />
+      <div className="absolute right-[-80px] top-[-80px] w-[260px] sm:w-[320px] h-[260px] sm:h-[320px] bg-glow-teal opacity-30 pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
         
-        <div className="text-center mb-16">
-          <span className="font-heading text-xs font-semibold uppercase tracking-widest text-[#138A8A] mb-3 block">
-            Endorsements
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-[#4B2E2A]">
-            What People Say
-          </h2>
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#138A8A]/10 border border-[#138A8A]/20 text-[#138A8A] text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-3 shadow-xs"
+          >
+            <Sparkles size={12} />
+            <span>Endorsements &amp; Philosophy</span>
+          </motion.div>
+
+          <motion.h2 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.05 }}
+            className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#4B2E2A]"
+          >
+            What Drives My Work
+          </motion.h2>
         </div>
 
-        {/* Carousel Window */}
-        <div className="relative min-h-[280px] sm:min-h-[220px] flex items-center justify-center">
+        {/* Featured Testimonial / Philosophy Card */}
+        <div className="relative">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={currentIndex}
@@ -63,69 +82,69 @@ export const Testimonials: React.FC = () => {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="w-full bg-white border border-[#4B2E2A]/10 rounded-3xl p-8 md:p-12 shadow-sm text-center relative flex flex-col items-center"
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full bg-white/95 backdrop-blur-xs border border-[#4B2E2A]/10 rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-9 shadow-xs hover:shadow-md transition-all duration-300 relative flex flex-col"
             >
-              {/* Quote icon overlay */}
-              <div className="absolute top-6 left-6 text-[#F47C20]/10">
-                <Quote size={64} fill="currentColor" />
+              {/* Top Row: Clean Quote Badge */}
+              <div className="flex items-center justify-between mb-4 sm:mb-5">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F47C20]/10 border border-[#F47C20]/20 text-[#F47C20] flex items-center justify-center shadow-xs">
+                  <Quote size={18} fill="currentColor" />
+                </div>
+                
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF8F3] border border-[#4B2E2A]/10 text-[10px] sm:text-[11px] font-bold text-[#4B2E2A]/70 uppercase tracking-wider">
+                  <Award size={13} className="text-[#E8A317]" />
+                  <span>Verified Mission</span>
+                </div>
               </div>
 
-              <p className="font-sans text-base md:text-lg italic text-[#4B2E2A]/85 leading-relaxed mb-8 max-w-2xl relative z-10">
-                "{currentTestimonial.quote}"
+              {/* Quote Statement */}
+              <p className="font-heading text-sm sm:text-base md:text-lg text-[#4B2E2A] font-medium leading-relaxed mb-6 sm:mb-7">
+                &ldquo;{currentTestimonial.quote}&rdquo;
               </p>
 
-              {/* Avatar indicator */}
-              <div className="flex items-center gap-4 mt-auto">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#F47C20] to-[#E8A317] flex items-center justify-center font-heading text-sm font-bold text-white shadow-sm">
-                  {currentTestimonial.avatar}
+              {/* Author Footer */}
+              <div className="flex items-center justify-between border-t border-[#4B2E2A]/8 pt-4 mt-auto">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-tr from-[#F47C20] to-[#E8A317] flex items-center justify-center font-heading text-xs sm:text-sm font-bold text-white shadow-xs shrink-0">
+                    {currentTestimonial.avatar}
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-xs sm:text-sm font-bold text-[#4B2E2A]">
+                      {currentTestimonial.name}
+                    </h3>
+                    <p className="font-sans text-[10px] sm:text-[11px] text-[#4B2E2A]/60 font-semibold">
+                      {currentTestimonial.role} &bull; {currentTestimonial.company}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-left">
-                  <h4 className="font-heading text-sm font-bold text-[#4B2E2A]">
-                    {currentTestimonial.name}
-                  </h4>
-                  <p className="font-sans text-xs text-[#4B2E2A]/60 font-semibold">
-                    {currentTestimonial.role} &mdash; {currentTestimonial.company}
-                  </p>
-                </div>
+
+                {/* Integrated Carousel Controls (if more than 1 testimonial) */}
+                {testimonials.length > 1 && (
+                  <div className="flex items-center gap-1.5 bg-[#FAF8F3] border border-[#4B2E2A]/10 rounded-full p-1 shadow-xs">
+                    <button
+                      onClick={handlePrev}
+                      className="w-7 h-7 rounded-full flex items-center justify-center text-[#4B2E2A]/70 hover:text-[#4B2E2A] hover:bg-white transition-colors active:scale-90 cursor-pointer"
+                      aria-label="Previous endorsement"
+                    >
+                      <ChevronLeft size={15} />
+                    </button>
+                    
+                    <span className="text-[10px] font-bold text-[#4B2E2A]/60 px-1 select-none">
+                      {currentIndex + 1}/{testimonials.length}
+                    </span>
+
+                    <button
+                      onClick={handleNext}
+                      className="w-7 h-7 rounded-full flex items-center justify-center text-[#4B2E2A]/70 hover:text-[#4B2E2A] hover:bg-white transition-colors active:scale-90 cursor-pointer"
+                      aria-label="Next endorsement"
+                    >
+                      <ChevronRight size={15} />
+                    </button>
+                  </div>
+                )}
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        {/* Pagination arrows */}
-        <div className="flex items-center justify-center gap-6 mt-10">
-          <button
-            onClick={handlePrev}
-            className="p-3 rounded-full border border-[#4B2E2A]/20 bg-white hover:border-[#138A8A] hover:text-[#138A8A] transition-all cursor-pointer shadow-sm group"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft size={20} className="transition-transform duration-200 group-hover:-translate-x-0.5" />
-          </button>
-          
-          <div className="flex gap-1.5">
-            {testimonials.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  setDirection(idx > currentIndex ? 1 : -1);
-                  setCurrentIndex(idx);
-                }}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  currentIndex === idx ? 'bg-[#F47C20] w-6' : 'bg-[#4B2E2A]/15 hover:bg-[#4B2E2A]/40'
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={handleNext}
-            className="p-3 rounded-full border border-[#4B2E2A]/20 bg-white hover:border-[#138A8A] hover:text-[#138A8A] transition-all cursor-pointer shadow-sm group"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight size={20} className="transition-transform duration-200 group-hover:translate-x-0.5" />
-          </button>
         </div>
 
       </div>
