@@ -19,7 +19,7 @@ import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 export default function Home() {
   return (
     <>
-      {/* Brand Preloader: 'Nacho says Hi.' */}
+      {/* Brand Preloader: 'Nacho says Hi!' */}
       <Preloader />
 
       {/* Floating navigation header */}

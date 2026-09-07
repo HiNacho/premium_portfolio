@@ -74,7 +74,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   if (prefersReducedMotion) {
     return (
       <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#FAF8F3] text-[#4B2E2A] font-heading text-3xl font-bold transition-opacity duration-500 opacity-100">
-        <span>Nacho says <span className="text-[#F47C20]">Hi.</span></span>
+        <span>Nacho says <span className="text-[#F47C20]">Hi!</span></span>
       </div>
     );
   }
@@ -145,7 +145,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               </motion.span>
             </div>
 
-            {/* 3. "Hi." Payoff Moment */}
+            {/* 3. "Hi!" Payoff Moment */}
             <div className="overflow-hidden py-1 flex items-center">
               <motion.div
                 initial={{ scale: 0, opacity: 0, rotate: -8 }}
@@ -164,19 +164,23 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   Hi
                 </span>
 
-                {/* Animated Accent Dot representing the period */}
+                {/* Animated Exclamation Mark */}
                 <motion.span
-                  initial={{ scale: 0 }}
+                  initial={{ scale: 0, y: -12, rotate: 15 }}
                   animate={(phase === 'hi' || phase === 'settled') ? { 
                     scale: [0, 1.35, 1],
+                    y: 0,
+                    rotate: [15, -4, 0],
                     transition: { 
-                      duration: 0.4, 
-                      delay: 0.2, 
-                      ease: "easeOut" 
+                      duration: 0.45, 
+                      delay: 0.15, 
+                      ease: [0.34, 1.56, 0.64, 1] 
                     } 
                   } : {}}
-                  className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-gradient-to-tr from-[#F47C20] to-[#E8A317] inline-block ml-1 shadow-sm"
-                />
+                  className="font-heading font-extrabold text-5xl sm:text-6xl md:text-7xl bg-gradient-to-tr from-[#F47C20] to-[#E8A317] bg-clip-text text-transparent inline-block ml-0.5 drop-shadow-xs"
+                >
+                  !
+                </motion.span>
 
                 {/* Subtle Ripple Ping on Payoff */}
                 {phase === 'hi' && (
@@ -184,7 +188,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                     initial={{ scale: 0.8, opacity: 0.8 }}
                     animate={{ scale: 2.2, opacity: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="absolute right-0 w-3.5 h-3.5 rounded-full bg-[#F47C20] pointer-events-none"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#F47C20]/25 pointer-events-none"
                   />
                 )}
               </motion.div>
