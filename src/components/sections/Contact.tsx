@@ -86,12 +86,12 @@ export const Contact: React.FC = () => {
               Get In Touch
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-[#4B2E2A] mb-6">
-              Let's build something <br />
+              Let&apos;s build something <br />
               together.
             </h2>
             
             <p className="font-sans text-sm sm:text-base text-[#4B2E2A]/70 leading-relaxed mb-8 max-w-sm">
-              I'm always open to discussing new projects, research opportunities, clinical informatics workflows, or technical consulting.
+              I&apos;m always open to discussing new projects, research opportunities, clinical informatics workflows, or technical consulting.
             </p>
 
             {/* Direct contact items */}
