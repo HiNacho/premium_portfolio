@@ -1,4 +1,5 @@
 import React from 'react';
+import { Preloader } from '@/components/ui/Preloader';
 import { Navbar } from '@/components/layout/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { Stats } from '@/components/sections/Stats';
@@ -18,6 +19,9 @@ import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 export default function Home() {
   return (
     <>
+      {/* Brand Preloader: 'Nacho says Hi!' */}
+      <Preloader />
+
       {/* Floating navigation header */}
       <Navbar />
       
